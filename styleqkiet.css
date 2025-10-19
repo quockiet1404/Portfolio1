@@ -1101,7 +1101,7 @@
         left: -280px; /* Ẩn menu ra ngoài màn hình (chiều rộng 280px) */
         width: 280px; 
         height: 100%;
-        background-color: var(--background-color); 
+        background-color: var(--background-color) !important; 
         box-shadow: 5px 0 15px rgba(0, 0, 0, 0.7);
         flex-direction: column; 
         padding-top: 100px;
