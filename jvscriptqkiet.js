@@ -7,7 +7,7 @@
         
 
         const revealElements = () => {
-            
+
             const revealers = document.querySelectorAll('.scroll-reveal');
             revealers.forEach((el) => {
                 // Kiểm tra xem phần tử có nằm trong tầm nhìn và CHƯA được reveal
@@ -460,23 +460,18 @@
             init();
             animate();
         }
-        // --- MOBILE MENU TOGGLE SCRIPT ---
+let revealTimeout = null;
+
 const setupMobileMenu = () => {
     const hamburger = document.querySelector('.hamburger-menu');
     const navLinks = document.querySelector('.nav-links');
     const navItems = document.querySelectorAll('.nav-links a');
 
-    // Hàm tạm dừng Scroll Reveal sau khi chuyển hướng
-    const debounceScroll = () => {
-        isScrolling = true; // Bật cờ (Tạm dừng reveal)
-        
-        // Sau 1 giây (đủ thời gian cho cuộn hoàn tất), tắt cờ
-        setTimeout(() => {
-            isScrolling = false; 
-            // Kích hoạt reveal ngay lập tức sau khi bật lại 
-            revealElements(); 
-        }, 1000); 
-    };
+    // ⚠️ QUAN TRỌNG: Khởi tạo Scroll Listener CHỈ MỘT LẦN ở đây
+    window.addEventListener('scroll', revealElements); 
+    
+    // Đảm bảo revealElements được gọi một lần ban đầu (vì đã xóa khỏi DOMContentLoaded)
+    // revealElements(); // Đã được gọi trong DOMContentLoaded
 
     if (hamburger && navLinks) {
         // 1. Chức năng đóng/mở menu
@@ -487,16 +482,55 @@ const setupMobileMenu = () => {
             document.body.classList.toggle('no-scroll'); 
         });
 
-        // 2. Đóng menu và xử lý reveal khi click vào một liên kết
+        // 2. Chức năng cuộn mượt và đóng menu khi click vào liên kết
         navItems.forEach(link => {
-            link.addEventListener('click', () => {
-                // Đóng menu
-                navLinks.classList.remove('active');
-                hamburger.classList.remove('active');
-                document.body.classList.remove('no-scroll'); 
+            link.addEventListener('click', (e) => {
                 
-                // Kích hoạt tạm dừng Scroll Reveal sau khi cuộn
-                debounceScroll(); 
+                // NGĂN CHẶN HÀNH VI CUỘN MẶC ĐỊNH CỦA TRÌNH DUYỆT
+                e.preventDefault(); 
+                
+                const targetId = link.getAttribute('href');
+                // Nếu link là Tải CV, không làm gì thêm
+                if (link.hasAttribute('download')) {
+                    // Chỉ đóng menu và cho phép hành vi download
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.classList.remove('no-scroll');
+                    return; 
+                }
+
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    
+                    // --- KỸ THUẬT TẠM DỪNG SCROLL REVEAL ---
+                    
+                    // A. Xóa timeout cũ nếu có
+                    if (revealTimeout) {
+                        clearTimeout(revealTimeout);
+                    }
+                    
+                    // B. Ngắt kết nối Reveal khỏi sự kiện Scroll trước khi cuộn
+                    window.removeEventListener('scroll', revealElements);
+                    
+                    // Đóng menu
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.classList.remove('no-scroll'); 
+                    
+                    // C. THỰC HIỆN CUỘN MỀM BẰNG JS
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // D. Kích hoạt lại Reveal sau khi cuộn hoàn tất
+                    revealTimeout = setTimeout(() => {
+                        // Kích hoạt reveal ngay lập tức
+                        revealElements(); 
+                        // Kết nối lại Reveal với sự kiện Scroll
+                        window.addEventListener('scroll', revealElements);
+                    }, 1200); // Tăng thời gian lên 1.2 giây để an toàn hơn
+                }
             });
         });
     }
