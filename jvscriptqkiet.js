@@ -7,7 +7,6 @@
         
 
         const revealElements = () => {
-            if (isScrolling) return;
             const revealers = document.querySelectorAll('.scroll-reveal');
             revealers.forEach((el) => {
                 // Kiểm tra xem phần tử có nằm trong tầm nhìn và CHƯA được reveal
@@ -460,12 +459,7 @@
             init();
             animate();
         }
-                
-// --- MOBILE MENU TOGGLE SCRIPT ---
-let isScrolling = false;
-
-// --- MOBILE MENU TOGGLE SCRIPT ---
-// --- MOBILE MENU TOGGLE SCRIPT ---
+        // --- MOBILE MENU TOGGLE SCRIPT ---
 const setupMobileMenu = () => {
     const hamburger = document.querySelector('.hamburger-menu');
     const navLinks = document.querySelector('.nav-links');
