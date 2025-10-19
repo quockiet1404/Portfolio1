@@ -7,6 +7,7 @@
         
 
         const revealElements = () => {
+            
             const revealers = document.querySelectorAll('.scroll-reveal');
             revealers.forEach((el) => {
                 // Kiểm tra xem phần tử có nằm trong tầm nhìn và CHƯA được reveal
