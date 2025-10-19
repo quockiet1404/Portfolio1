@@ -7,6 +7,7 @@
         
 
         const revealElements = () => {
+            if (isScrolling) return;
             const revealers = document.querySelectorAll('.scroll-reveal');
             revealers.forEach((el) => {
                 // Kiểm tra xem phần tử có nằm trong tầm nhìn và CHƯA được reveal
@@ -464,6 +465,7 @@
 let isScrolling = false;
 
 // --- MOBILE MENU TOGGLE SCRIPT ---
+// --- MOBILE MENU TOGGLE SCRIPT ---
 const setupMobileMenu = () => {
     const hamburger = document.querySelector('.hamburger-menu');
     const navLinks = document.querySelector('.nav-links');
@@ -471,17 +473,18 @@ const setupMobileMenu = () => {
 
     // Hàm tạm dừng Scroll Reveal sau khi chuyển hướng
     const debounceScroll = () => {
-        isScrolling = true; // Tạm dừng reveal
-        // Sau 1 giây (đủ thời gian để cuộn đến section), bật lại reveal
+        isScrolling = true; // Bật cờ (Tạm dừng reveal)
+        
+        // Sau 1 giây (đủ thời gian cho cuộn hoàn tất), tắt cờ
         setTimeout(() => {
             isScrolling = false; 
-            // Kích hoạt reveal ngay lập tức sau khi bật lại
+            // Kích hoạt reveal ngay lập tức sau khi bật lại 
             revealElements(); 
         }, 1000); 
     };
 
     if (hamburger && navLinks) {
-        // 1. Chức năng đóng/mở menu khi click vào nút Hamburger
+        // 1. Chức năng đóng/mở menu
         hamburger.addEventListener('click', () => {
             navLinks.classList.toggle('active');
             hamburger.classList.toggle('active'); 
@@ -489,7 +492,7 @@ const setupMobileMenu = () => {
             document.body.classList.toggle('no-scroll'); 
         });
 
-        // 2. Chức năng đóng menu khi click vào một liên kết
+        // 2. Đóng menu và xử lý reveal khi click vào một liên kết
         navItems.forEach(link => {
             link.addEventListener('click', () => {
                 // Đóng menu
@@ -515,5 +518,5 @@ document.addEventListener('DOMContentLoaded', () => {
     setupCustomValidation(); 
     setupMailtoFix(); 
     toggleBackToTopButton();
-    setupMobileMenu(); // <--- ĐẢM BẢO GỌI HÀM NÀY
+    setupMobileMenu(); // ⚠️ ĐẢM BẢO DÒNG NÀY CÓ TẠI ĐÂY
 });
