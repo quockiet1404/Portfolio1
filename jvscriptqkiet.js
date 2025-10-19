@@ -459,13 +459,26 @@
             init();
             animate();
         }
-        // jvscriptqkiet.js (Thêm hàm này vào file, ví dụ ở đầu hoặc cuối file)
+                
+// --- MOBILE MENU TOGGLE SCRIPT ---
+let isScrolling = false;
 
 // --- MOBILE MENU TOGGLE SCRIPT ---
 const setupMobileMenu = () => {
     const hamburger = document.querySelector('.hamburger-menu');
     const navLinks = document.querySelector('.nav-links');
-    const navItems = document.querySelectorAll('.nav-links a'); // Lấy tất cả các link
+    const navItems = document.querySelectorAll('.nav-links a');
+
+    // Hàm tạm dừng Scroll Reveal sau khi chuyển hướng
+    const debounceScroll = () => {
+        isScrolling = true; // Tạm dừng reveal
+        // Sau 1 giây (đủ thời gian để cuộn đến section), bật lại reveal
+        setTimeout(() => {
+            isScrolling = false; 
+            // Kích hoạt reveal ngay lập tức sau khi bật lại
+            revealElements(); 
+        }, 1000); 
+    };
 
     if (hamburger && navLinks) {
         // 1. Chức năng đóng/mở menu khi click vào nút Hamburger
@@ -483,6 +496,9 @@ const setupMobileMenu = () => {
                 navLinks.classList.remove('active');
                 hamburger.classList.remove('active');
                 document.body.classList.remove('no-scroll'); 
+                
+                // Kích hoạt tạm dừng Scroll Reveal sau khi cuộn
+                debounceScroll(); 
             });
         });
     }
