@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Tối Giản | Lê Huỳnh Quốc Kiệt</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <link rel="stylesheet" href="styleqkiet.css">
+</head>
+<body>
+    <canvas id="particle-canvas"></canvas>
+
+    <header class="main-header">
+        <div class="nav-content">
+            <div class="logo"></div>
+            <button class="hamburger-menu" aria-label="Mở Menu Điều Hướng">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links">
+                
+                <li><a href="#about">Thông tin</a></li>
+                <li><a href="#hobbies">Sở thích</a></li>
+                <li><a href="#certifications">Chứng chỉ</a></li> <li><a href="#soft-skills">Kỹ năng mềm</a></li>
+                <li><a href="#expertise">Kỹ năng chuyên môn</a></li> 
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+                <li><a href="imgqkiet/CV-QuocKiet.pdf" download class="btn-download">
+                    Tải CV <i class="fas fa-download"></i>
+                </a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="about" class="section-padding hero-section">
+            <div class="intro-content">
+                <h1 data-delay="0.2" class="scroll-reveal">
+                    Xin chào, tôi là <br>
+                    <span id="wavy-name-container" class="primary-color-text">Lê Huỳnh Quốc Kiệt</span>
+                </h1>
+                
+                <div class="personal-info-block scroll-reveal" data-delay="0.3">
+                    <h3 class="info-title"><i class="fas fa-id-card-alt"></i> Thông tin cơ bản</h3>
+                    <ul class="info-list">
+                        <li><span><i class="fas fa-mars"></i> Giới tính:</span> Nam</li>
+                        <li><span><i class="fas fa-birthday-cake"></i> Ngày sinh:</span> 14-04-2006</li>
+                        <li><span><i class="fas fa-globe"></i> Dân tộc:</span> Kinh</li>
+                        <li><span><i class="fas fa-city"></i> Quê quán:</span> Lâm Đồng</li>
+                        <li><span><i class="fas fa-graduation-cap"></i> Trình độ học vấn:</span> Sinh viên Đại học</li>
+                        <li><span><i class="fas fa-language"></i> Ngôn ngữ:</span> Tiếng Việt (Bản ngữ)</li>
+                        <li><span><i class="fas fa-map-marker-alt"></i> Địa chỉ:</span> Thủ Dầu Một, Tp.Hồ Chí Minh, Việt Nam</li>
+                        <li><span><i class="fas fa-phone"></i> Số ĐT:</span> 0869846008</li>
+                        <li><span><i class="fas fa-envelope"></i> Email:</span> rinnkiet@gmail.com</li>
+                    </ul>
+                </div>
+                
+                <div class="personal-info-block scroll-reveal" data-delay="0.4">
+                    <h3 class="info-title"><i class="fas fa-share-alt"></i> Mạng xã hội</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/lhqk.14426" target="_blank"><i class="fab fa-facebook-f"></i></a> 
+                        <a href="https://zalo.me/0869846008" target="_blank"><i class="fas fa-comment-dots"></i></a> 
+                        <a href="https://www.tiktok.com/@aries.14426" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://github.com/quockiet1404" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:24050027@student.bdu.edu.vn"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+                </div>
+
+            <div class="profile-and-extra-info"> 
+                <div class="profile-image-container scroll-reveal" data-delay="0.8">
+                    <img src="imgqkiet/kietprofile.jpg" alt="Ảnh Profile">
+                </div>
+                
+                <div class="intro-content-right personal-info-block scroll-reveal" data-delay="0.5">
+                    <h3 class="info-title">
+                        <i class="fas fa-user-tie"></i> Giới thiệu
+                    </h3>
+                    
+                    <p class="tagline-intro" style="margin-bottom: 0;">
+                        - Tôi là một sinh viên ngành "Công nghệ thông tin" của trường Đại học Bình Dương, lớp 27TH01.<br>
+                        - Tôi muốn trở thành một "Kỹ sư Phần mềm" với chuyên môn sâu về các ứng dụng đầy tính bức phá, hiện đại và dễ dàng tiếp cận được với mọi người dùng
+                    </p>
+                    
+                    </div>
+            </div>
+        </section>
+
+        <section id="hobbies">
+            <div class="container">
+        <h2><i class="fas fa-heart"></i> Sở Thích Cá Nhân</h2>
+            </div>
+        </section>
+            
+            <div class="hobbies-grid">
+                
+                <div class="hobby-card scroll-reveal" data-delay="0.1">
+                    <div class="hobby-icon icon-music"><i class="fas fa-music"></i></div>
+                    <h3>Nghe nhạc</h3>
+                    <div class="hobby-image-container">
+                        <img src="imgqkiet/kietnghenhac.jpg" alt="Ảnh minh họa sở thích âm nhạc">
+                    </div>
+                    <div class="hobby-description">
+                        <p>Tôi thích nghe nhiều thể loại nhạc khác nhau, từ Pop, Rock đến Lo-fi. Âm nhạc là nguồn cảm hứng giúp tôi thư giãn và tăng cường khả năng sáng tạo.</p>
+                    </div>
+                    <a href="#" class="btn-detail btn-detail-music">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hobby-card scroll-reveal" data-delay="0.2">
+                    <div class="hobby-icon icon-movie"><i class="fas fa-film"></i></div>
+                    <h3>Xem phim</h3>
+                    <div class="hobby-image-container">
+                        <img src="imgqkiet/kietxemphim.jpg" alt="Ảnh minh họa sở thích xem phim">
+                    </div>
+                    <div class="hobby-description">
+                        <p>Tôi là một "mọt phim" chính hiệu, đặc biệt là các thể loại khoa học viễn tưởng và tâm lý tội phạm. Điện ảnh mở rộng tư duy và trí tưởng tượng của tôi.</p>
+                    </div>
+                    <a href="#" class="btn-detail btn-detail-movie">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hobby-card scroll-reveal" data-delay="0.3">
+                    <div class="hobby-icon icon-sleep"><i class="fas fa-moon"></i></div>
+                    <h3>Ngủ</h3>
+                    <div class="hobby-image-container">
+                        <img src="imgqkiet/kietngu.jpg" alt="Ảnh minh họa sở thích ngủ">
+                    </div>
+                    <div class="hobby-description">
+                        <p>Ngủ là cách tốt nhất để tôi tái tạo năng lượng sau những giờ làm việc căng thẳng. Một giấc ngủ sâu giúp tôi duy trì sự tập trung và hiệu suất công việc cao nhất.</p>
+                    </div>
+                    <a href="#" class="btn-detail btn-detail-sleep">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="hobby-card scroll-reveal" data-delay="0.4">
+                    <div class="hobby-icon icon-book"><i class="fas fa-book-open"></i></div>
+                    <h3>Đọc truyện</h3>
+                    <div class="hobby-image-container">
+                        <img src="imgqkiet/kietdoctruyen.jpg" alt="Ảnh minh họa sở thích đọc truyện">
+                    </div>
+                    <div class="hobby-description">
+                        <p>Tôi thường đọc truyện trinh thám và truyện tranh (manga). Đây là một thói quen giúp cải thiện khả năng ngôn ngữ và tăng cường sự kiên nhẫn khi đọc hiểu.</p>
+                    </div>
+                    <a href="#" class="btn-detail btn-detail-book">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+                <div class="hobby-card scroll-reveal" data-delay="0.5">
+                    <div class="hobby-icon icon-game"><i class="fas fa-gamepad"></i></div>
+                    <h3>Chơi game</h3>
+                    <div class="hobby-image-container">
+                        <img src="imgqkiet/kietchoigame.jpg">
+                    </div>
+                    <div class="hobby-description">
+                        <p>Tôi thích chơi các game chiến thuật và game nhập vai (RPG). Chơi game không chỉ giải trí mà còn giúp tôi rèn luyện kỹ năng ra quyết định nhanh chóng và làm việc nhóm (teamwork).</p>
+                    </div>
+                    <a href="#" class="btn-detail btn-detail-game">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                </div>
+                
+            </div>
+        </section>
+        
+        <section id="certifications">
+            <h2 class="scroll-reveal"><i class="fas fa-certificate" style="color: var(--primary-color);"></i> Chứng Chỉ & Giải Thưởng</h2>
+            
+            <div class="certification-list">
+                
+                <div class="certification-item scroll-reveal" data-delay="0.1" style="border-left-color: var(--neon-pink); text-align: center; border-radius: 15px;">
+                    <div class="cert-icon" style="margin-right: 0; color: var(--neon-pink);"><i class="fas fa-hourglass-half"></i></div>
+                    <h4 style="font-size: 1.5em; color: var(--neon-pink); margin-bottom: 5px; text-align: center;">CHƯA CÓ CHỨNG CHỈ NÀO</h4>
+                    <p style="color: var(--text-subtle); font-size: 1.1em; text-align: center;">
+                        Hiện tại, tôi đang tập trung hoàn thành các khóa học và dự án để chuẩn bị thi lấy chứng chỉ. 
+                        Mục này sẽ được cập nhật sớm nhất khi có chứng chỉ mới!
+                    </p>
+                </div>
+                </div>
+        </section>
+        <section id="soft-skills">
+            <h2 class="scroll-reveal"><i class="fas fa-users" style="color: var(--primary-color);"></i> Kỹ Năng Mềm</h2>
+            <div class="skill-card"> 
+                <h3>Mức độ thành thạo</h3>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.1" data-level="70">
+                    <p><span><i class="fas fa-comments"></i> Giao tiếp và Thuyết trình</span> <span>70%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.2" data-level="85">
+                    <p><span><i class="fas fa-handshake"></i> Làm việc nhóm</span> <span>85%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.3" data-level="60">
+                    <p><span><i class="fas fa-lightbulb"></i> Giải quyết vấn đề</span> <span>60%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.4" data-level="50">
+                    <p><span><i class="fas fa-clock"></i> Quản lý thời gian</span> <span>50%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="expertise">
+            <h2 class="scroll-reveal"><i class="fas fa-code" style="color: var(--primary-color);"></i> Kỹ Năng Chuyên Môn</h2>
+            <div class="skill-card">
+                <h3>Mức độ thành thạo</h3>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.1" data-level="90">
+                    <p><span><i class="fab fa-html5" style="color: #e34c26;"></i> HTML5</span> <span>90%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.2" data-level="86">
+                    <p><span><i class="fab fa-js-square" style="color: #f7df1e;"></i> JavaScript</span> <span>86%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.3" data-level="80">
+                    <p><span><i class="fab fa-css3-alt" style="color: #264de4;"></i> CSS3 (SASS, Tailwind)</span> <span>80%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+                
+                <div class="skill-item scroll-reveal" data-delay="0.4" data-level="70">
+                    <p><span><i class="fas fa-terminal" style="color: #8c0c8f;"></i> C#</span> <span>70%</span></p>
+                    <div class="progress-bar"><div class="progress-bar-fill"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="section-padding scroll-reveal">
+            <h2><i class="fas fa-laptop-code"></i> Dự Án</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card scroll-reveal cyber-project-highlight" data-delay="0.1">
+                    <img src="imgqkiet/sach.jpg" alt="Dự án Thiết kế Website Bán Sách">
+                    <div class="project-info">
+                        <h3>Thiết kế Website Bán Sách</h3>
+                        <p>Xây dựng trang web E-Commerce bán sách với giao diện Cyberpunk độc đáo. Tối ưu hóa hiệu suất tìm kiếm, giỏ hàng và thanh toán, mang lại trải nghiệm tương lai và tốc độ cao.</p>
+                        <a href="#" target="_blank">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="project-card scroll-reveal cyber-project-highlight" data-delay="0.3">
+                    <img src="imgqkiet/webbanhangonline.jpg" alt="Dự án Thiết kế Web Bán Hàng Online">
+                    <div class="project-info">
+                        <h3>Thiết kế Web Bán Hàng Online</h3>
+                        <p>Phát triển hệ thống E-Commerce hoàn chỉnh. Triển khai các tính năng như quản lý sản phẩm, đơn hàng, bảo mật và tích hợp cổng thanh toán trực tuyến.</p>
+                        <a href="#" target="_blank">Xem chi tiết <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2> <i class="fas fa-envelope"></i> Liên Hệ Cho Tôi</h2>
+            <p class="contact-tagline scroll-reveal" data-delay="0.1">Tôi luôn sẵn lòng nhận các dự án mới, phù hợp với tiêu chí tối giản và hiệu suất cao.</p>
+            
+            <form id="contact-form">
+                <input type="text" id="name" name="Tên" placeholder="Nhập tên của bạn" required class="scroll-reveal" data-delay="0.2">
+                <input type="email" id="email" name="Email" placeholder="Nhập Email của bạn" required class="scroll-reveal" data-delay="0.3">
+                <input type="text" id="subject" name="Chủ đề" placeholder="Nhập chủ đề" required class="scroll-reveal" data-delay="0.4">
+                <textarea id="message" name="Tin nhắn" rows="5" placeholder="Nhập nội dung tin nhắn" required class="scroll-reveal" data-delay="0.5"></textarea>
+                <button type="submit" class="contact-submit-btn scroll-reveal" data-delay="0.6">
+                    <i class="fas fa-paper-plane"></i> Gửi
+                </button>
+            </form>
+        </section>
+
+    </main>
+
+    <footer class="main-footer">
+        <p>
+            Được thiết kế bởi &copy; Lê Huỳnh Quốc Kiệt 2025 | Portfolio cá nhân<br>
+        </p>
+    </footer>
+    
+    <button onclick="scrollToTop()" id="back-to-top" title="Quay lại đầu trang">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <script src="jvscriptqkiet.js"></script>
+
+</body>
+</html>

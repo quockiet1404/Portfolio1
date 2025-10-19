@@ -1,0 +1,1152 @@
+/* --- 1. Thiết lập Chung và Biến CSS --- */
+        :root {
+            --primary-color: #81d4fa; /* Màu Xanh Băng Sáng (cho điểm nhấn) */
+            --secondary-color: #e0f2f7; /* Màu Trắng Xanh Nhạt (cho chữ chính) */ 
+            --background-color: #2c3e50; /* Màu nền dự phòng tối */ 
+            --card-background: rgba(255, 255, 255, 0.1); /* Màu nền card trong suốt nhẹ trên nền tối */
+            --text-color: #f8f9fa; /* Màu chữ trắng sáng */
+            --text-subtle: #b0c4de; /* Màu chữ phụ nhạt hơn */
+            --shadow-subtle: 0 2px 10px rgba(0, 0, 0, 0.5); /* Bóng đổ đậm hơn trên nền tối */
+            --progress-bg: rgba(255, 255, 255, 0.2); /* Nền progress bar trong suốt nhẹ */
+            /* Màu cho nút chi tiết sở thích */
+            --pink-start: #ff4a8b;
+            --pink-end: #ff85a2;
+            --blue-start: #4a8dff;
+            --blue-end: #85a2ff;
+            --yellow-start: #ffc107;
+            --yellow-end: #ffd54f;
+            --green-start: #4caf50;
+            --green-end: #81c784;
+            /* MỚI: Màu cho Gaming */
+            --purple-start: #9c27b0; 
+            --purple-end: #ce93d8; 
+
+            /* --- MỚI: Màu cho Cyberpunk Project 1 --- */
+            --neon-pink: #ff4a8b;
+            --neon-blue: #4a8dff;
+            --dark-cyber: #0d1a26; 
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-color); 
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden; 
+            font-weight: 300;
+            position: relative; 
+            font-size: 16px;
+        }
+
+        /* Gradient màu nền trời đêm */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a2a3a 0%, #2c3e50 50%, #4a6572 100%); 
+            opacity: 1; 
+            z-index: -2; 
+        }
+
+        /* Style cho Canvas background */
+        #particle-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            pointer-events: none; 
+        }
+
+        a {
+            text-decoration: none;
+            color: var(--primary-color); 
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        .section-padding {
+            padding: 100px 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative; 
+            z-index: 2; 
+        }
+        
+        #soft-skills, #expertise {
+            padding: 80px 5%;
+            position: relative; 
+            z-index: 1;
+            background-color: transparent; 
+            border-radius: 0;
+            margin-bottom: 30px;
+            box-shadow: none; 
+        }
+        
+        /* Cập nhật Hobbies để nó trở thành khối độc lập */
+        #hobbies {
+            padding: 80px 5%;
+            position: relative; 
+            z-index: 1;
+            background-color: transparent; 
+            text-align: center; /* Căn giữa nội dung hobby */
+        }
+        
+        /* --- CSS MỚI CHO MỤC CHỨNG CHỈ --- */
+        #certifications {
+            padding: 100px 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative; 
+            z-index: 2; 
+            text-align: center;
+        }
+
+        .certification-list {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .certification-item {
+            background: var(--card-background); /* Nền tối nhẹ */
+            border-left: 5px solid var(--neon-blue); /* Điểm nhấn viền màu xanh */
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: left;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .certification-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(74, 141, 255, 0.4);
+        }
+
+        .cert-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .cert-icon {
+            font-size: 2.5em;
+            color: var(--neon-blue); /* Màu xanh neon nổi bật */
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .cert-title-group h4 {
+            margin: 0;
+            font-size: 1.4em;
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .cert-title-group p {
+            margin: 5px 0 0;
+            color: var(--text-subtle);
+            font-size: 0.95em;
+        }
+
+        .cert-details {
+            padding-left: 55px; /* Căn thẳng hàng với nội dung bên dưới icon */
+            font-size: 0.9em;
+            color: var(--text-subtle);
+        }
+
+        .cert-details a {
+            color: var(--neon-pink); /* Link màu hồng neon */
+            font-weight: 600;
+        }
+        .cert-details a:hover {
+            color: var(--secondary-color);
+        }
+        /* -------------------------------------- */
+
+        h1, h2, h3 {
+            color: var(--secondary-color); 
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5); 
+        }
+        h2 {
+            font-size: 2.8em;
+            letter-spacing: -1px; 
+            margin-bottom: 50px;
+            color: var(--secondary-color); 
+        }
+        h3 {
+            font-weight: 600;
+            text-align: left; 
+            margin-bottom: 25px;
+            color: var(--text-color); 
+        }
+        
+        /* --- SCROLL REVEAL STYLES --- */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px); /* Bắt đầu từ dưới 40px */
+            transition: opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .scroll-reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* --- END SCROLL REVEAL STYLES --- */
+
+        /* --- 2. Header & Navigation --- */
+        .main-header {
+            background-color: transparent; 
+            box-shadow: none; 
+            position: sticky; 
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: none; 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: background-color 0.3s ease;
+        }
+        .main-header.scrolled {
+             background-color: rgba(26, 42, 58, 0.9); 
+             box-shadow: var(--shadow-subtle);
+             backdrop-filter: blur(5px);
+        }
+
+        .nav-content {
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 5%;
+        }
+
+        .logo {
+            font-size: 1.6em;
+            font-weight: 900;
+            color: var(--secondary-color); 
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex; 
+            gap: 40px;
+            flex-wrap: nowrap;
+        }
+
+        .nav-links a:not(.btn-download) {
+            color: var(--text-color); 
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 5px;
+            white-space: nowrap; 
+        }
+
+        .nav-links a:not(.btn-download)::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:not(.btn-download):hover::after {
+            width: 100%;
+        }
+        
+        /* Thêm style cho nút download CV */
+        .btn-download {
+            background-color: var(--primary-color);
+            color: #1a2a3a !important; 
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-weight: 700 !important;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+        .btn-download:hover {
+            background-color: var(--secondary-color); 
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+            color: #1a2a3a !important; 
+        }
+        .btn-download:hover::after { 
+            width: 0 !important;
+        }
+        
+        /* --- Bố cục Hero Section (CẬP NHẬT MỚI) --- */
+        .hero-section {
+            display: flex;
+            align-items: flex-start; /* Quan trọng: Căn đầu để 2 cột không bị kéo giãn */
+            justify-content: space-between; 
+            padding-top: 150px; 
+            padding-bottom: 100px;
+            text-align: left;
+            flex-wrap: wrap; 
+        }
+
+        /* KHỐI BÊN TRÁI (Thông tin cơ bản + Social Links) */
+        .intro-content {
+            flex: 1; 
+            max-width: 55%; /* Chiếm khoảng 55% chiều rộng */
+            padding-right: 50px; /* Tạo khoảng cách với cột bên phải */
+            text-align: left;
+        }
+
+        /* KHỐI MỚI: Bố cục cột bên phải (Chứa Ảnh và Giới thiệu) */
+        .profile-and-extra-info {
+            flex: 1; 
+            max-width: 40%; /* Chiếm khoảng 40% chiều rộng */
+            display: flex;
+            flex-direction: column; /* Sắp xếp ảnh và nội dung theo chiều dọc */
+            align-items: center; /* Căn giữa ảnh và nội dung trong cột này */
+            text-align: center; /* Căn giữa nội dung văn bản (vd: social links) */
+        }
+        
+        .profile-image-container {
+            /* Reset các thuộc tính flex cũ không còn cần thiết */
+            max-width: 100%; 
+            display: block; 
+            justify-content: initial;
+        }
+        
+        .profile-image-container img {
+            width: 300px; 
+            height: 300px;
+            object-fit: cover;
+            border-radius: 50%; 
+            border: 5px solid var(--primary-color); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.5s ease;
+        }
+
+        .profile-image-container img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* NỘI DUNG GIỚI THIỆU NẰM DƯỚI ẢNH (BÊN PHẢI) */
+        .intro-content-right {
+            width: 100%;
+            margin-top: 30px; /* Khoảng cách với ảnh phía trên */
+            text-align: left; /* Đặt lại căn lề cho chữ */
+        }
+
+        .intro-content-right .info-title {
+            margin-bottom: 10px;
+            text-align: left; /* Căn lề trái cho tiêu đề Giới thiệu */
+        }
+
+        /* KHỐI SOCIAL LINKS MỚI Ở CỘT BÊN TRÁI */
+        /* Cập nhật style để phù hợp với việc đặt trong Personal-info-block */
+        .social-links {
+            margin-top: 15px; /* Điều chỉnh margin cho phù hợp với tiêu đề bên trong block */
+            text-align: left; /* Căn trái cho các icon */
+        }
+        
+        .social-links a {
+            font-size: 1.8em;
+            margin-right: 20px;
+            color: var(--text-subtle);
+            display: inline-block; 
+            transition: transform 0.2s ease, color 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-5px); /* Thêm hiệu ứng nhấc nhẹ */
+        }
+        /* --- KẾT THÚC SOCIAL LINKS Ở CỘT TRÁI --- */
+
+        /* Điều chỉnh tiêu đề H1 trong cột trái */
+        .hero-section h1 {
+            text-align: left;
+            font-size: 3.5em; 
+            margin-bottom: 10px;
+            font-weight: 900;
+            line-height: 1.2;
+            color: var(--secondary-color);
+        }
+        
+        /* --- CSS CHO HIỆU ỨNG SÓNG CHỮ --- */
+        
+        /* Class để giữ màu xanh cho tên trước khi JS render */
+        .primary-color-text {
+            color: var(--primary-color) !important;
+        }
+        
+        /* FIX: Buộc tên phải ở trên cùng một hàng để không bị tách chữ */
+        #wavy-name-container, #wavy-contact-heading {
+            white-space: nowrap;
+        }
+
+        /* Định nghĩa hiệu ứng nhấp nhô MÀU XANH */
+        @keyframes waveMotion {
+            0%, 100% {
+                transform: translateY(0);
+                text-shadow: 0 0 5px rgba(129, 212, 250, 0.3); /* Bóng xanh nhẹ */
+            }
+            50% {
+                transform: translateY(-8px); /* Nhấp nhô mạnh hơn */
+                text-shadow: 0 0 20px rgba(129, 212, 250, 1); /* Phát sáng xanh mạnh */
+            }
+        }
+        
+        /* Định nghĩa hiệu ứng nhấp nhô MÀU TRẮNG */
+        @keyframes waveMotionWhite {
+            0%, 100% {
+                transform: translateY(0);
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.3); /* Bóng trắng nhẹ */
+            }
+            50% {
+                transform: translateY(-8px); 
+                text-shadow: 0 0 20px rgba(255, 255, 255, 1); /* Phát sáng trắng mạnh */
+            }
+        }
+
+        /* Style áp dụng cho từng ký tự (MÀU XANH) */
+        .wavy-char {
+            display: inline-block; /* Quan trọng để animation transform hoạt động */
+            font-weight: 900; 
+            color: var(--primary-color) !important; /* Đảm bảo màu xanh */
+            /* Cài đặt animation cơ bản */
+            animation-name: waveMotion;
+            animation-duration: 2s; /* Chu kỳ sóng */
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-fill-mode: both;
+        }
+        
+        /* Style áp dụng cho từng ký tự (MÀU TRẮNG) */
+        .wavy-char-white {
+            display: inline-block; 
+            font-weight: 900; 
+            color: var(--text-color) !important; /* Đảm bảo màu trắng */
+            animation-name: waveMotionWhite;
+            animation-duration: 2s; 
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+            animation-fill-mode: both;
+        }
+        /* ---------------------------------- */
+
+        .tagline-intro {
+            font-size: 1.3em;
+            color: var(--text-subtle);
+            margin-bottom: 30px;
+            font-weight: 400;
+        }
+        
+        /* --- 4. Kỹ năng & Sở thích --- */
+        
+        /* Grid cho các card sở thích */
+        .hobbies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 40px;
+        }
+
+        /* Style cho Card chung (áp dụng cho các phần skill) */
+        .skill-card {
+            background: transparent; 
+            padding: 30px;
+            border-radius: 0; 
+            box-shadow: none; 
+            width: 100%; 
+            max-width: 800px;
+            margin: 0 auto;
+            transition: all 0.3s ease;
+            border: none; 
+        }
+
+        /* Style cho card Sở thích (MỚI) */
+        .hobby-card {
+            background: var(--card-background); 
+            padding: 30px;
+            border-radius: 20px; 
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .hobby-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hobby-icon {
+            font-size: 4em;
+            margin-bottom: 10px;
+            display: inline-block;
+            transition: transform 0.3s ease, text-shadow 0.3s ease; /* Thêm transition */
+        }
+        
+        /* HIỆU ỨNG PHÓNG TO VÀ PHÁT SÁNG KHI HOVER */
+        .hobby-card:hover .hobby-icon {
+            transform: scale(1.15); /* Phóng to 15% */
+            /* Hiệu ứng phát sáng mạnh hơn, màu sắc cụ thể được giữ lại qua gradient */
+        }
+        
+        /* Màu gradient cụ thể cho từng sở thích */
+        .icon-music {
+            background: linear-gradient(45deg, var(--pink-start), var(--pink-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 74, 139, 0.8);
+        }
+        .icon-movie {
+            background: linear-gradient(45deg, var(--blue-start), var(--blue-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(74, 141, 255, 0.8);
+        }
+        .icon-sleep {
+            background: linear-gradient(45deg, var(--yellow-start), var(--yellow-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 193, 7, 0.8);
+        }
+        .icon-book {
+            background: linear-gradient(45deg, var(--green-start), var(--green-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(76, 175, 80, 0.8);
+        }
+        /* MỚI: Icon Gaming */
+        .icon-game {
+            background: linear-gradient(45deg, var(--purple-start), var(--purple-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(156, 39, 176, 0.8);
+        }
+
+        /* TĂNG CƯỜNG HIỆU ỨNG PHÁT SÁNG KHI HOVER */
+        .hobby-card:hover .icon-music {
+            text-shadow: 0 0 30px rgba(255, 74, 139, 1);
+        }
+        .hobby-card:hover .icon-movie {
+            text-shadow: 0 0 30px rgba(74, 141, 255, 1);
+        }
+        .hobby-card:hover .icon-sleep {
+            text-shadow: 0 0 30px rgba(255, 193, 7, 1);
+        }
+        .hobby-card:hover .icon-book {
+            text-shadow: 0 0 30px rgba(76, 175, 80, 1);
+        }
+        /* MỚI: Hover Gaming */
+        .hobby-card:hover .icon-game {
+            text-shadow: 0 0 30px rgba(156, 39, 176, 1);
+        }
+
+        .hobby-card h3 {
+            color: var(--text-color); 
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .hobby-description {
+            color: var(--text-subtle);
+            margin-bottom: 20px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        
+        .hobby-image-container {
+            width: 100%;
+            height: 150px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .hobby-image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .btn-detail {
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white !important;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .btn-detail-music {
+            background: linear-gradient(to right, var(--pink-start), var(--pink-end));
+            box-shadow: 0 4px 15px rgba(255, 74, 139, 0.4);
+        }
+        .btn-detail-movie {
+            background: linear-gradient(to right, var(--blue-start), var(--blue-end));
+            box-shadow: 0 4px 15px rgba(74, 141, 255, 0.4);
+        }
+        .btn-detail-sleep {
+            background: linear-gradient(to right, var(--yellow-start), var(--yellow-end));
+            box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
+        }
+        .btn-detail-book {
+            background: linear-gradient(to right, var(--green-start), var(--green-end));
+            box-shadow: 0 44px 15px rgba(76, 175, 80, 0.4);
+        }
+        /* MỚI: Button Gaming */
+        .btn-detail-game {
+            background: linear-gradient(to right, var(--purple-start), var(--purple-end));
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4);
+        }
+
+        .btn-detail:hover {
+            transform: translateY(-3px);
+            /* Box shadow được xử lý bởi từng class riêng */
+        }
+
+        /* Progress bar styles (dùng cho soft-skills và expertise) */
+        .skill-item {
+            margin-bottom: 20px;
+            cursor: pointer; 
+        }
+
+        .skill-item p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 600;
+            color: var(--text-color); 
+            transition: color 0.3s ease;
+        }
+        
+        .skill-item:hover p {
+            color: var(--primary-color); 
+        }
+
+        .progress-bar {
+            background-color: var(--progress-bg); 
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0; 
+            border-radius: 10px;
+            transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        }
+        
+        /* --- 5. Dự án --- */
+        .projects-grid {
+            display: grid; 
+            /* ĐIỀU CHỈNH: Đặt cố định 2 cột bằng nhau để tăng độ rộng của từng dự án */
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        /* ĐIỀU CHỈNH: Giảm chiều cao của ảnh dự án */
+        .project-card img {
+            width: 100%;
+            height: 200px; /* Chiều dài ngắn lại */
+            object-fit: cover;
+            opacity: 0.7; 
+        }
+
+        .project-card {
+            background: var(--card-background); 
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            color: var(--text-color); 
+        }
+        
+        /* --- CSS MỚI: HIỆU ỨNG CYBERPUNK/NEON CHO PROJECT HIGHLIGHTS --- */
+        
+        /* Áp dụng cho card dự án nổi bật */
+        .cyber-project-highlight {
+            background: var(--dark-cyber); /* Nền cực tối cho card nổi bật */
+            border: 3px solid var(--neon-blue); /* Viền xanh neon */
+            box-shadow: 0 0 20px rgba(74, 141, 255, 0.7), 0 0 40px rgba(255, 74, 139, 0.4); 
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Thêm lớp phủ Gradient Cyberpunk */
+        .cyber-project-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(74, 141, 255, 0.1), rgba(255, 74, 139, 0.1));
+            z-index: 1;
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        .cyber-project-highlight .project-info {
+            position: relative; /* Đặt nội dung ở trên lớp phủ */
+            z-index: 2;
+            padding: 20px; /* ĐIỀU CHỈNH: Giảm padding để card ngắn lại */
+            text-align: center;
+        }
+
+        .cyber-project-highlight h3 {
+            color: var(--secondary-color);
+            text-shadow: 0 0 10px var(--neon-blue);
+            margin-bottom: 15px;
+            font-size: 1.6em;
+            text-align: center;
+        }
+
+        .cyber-project-highlight p {
+            color: var(--text-subtle);
+            margin-bottom: 30px;
+            line-height: 1.6;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        /* Style cho nút chi tiết Cyber */
+        .cyber-project-highlight a {
+            display: inline-block;
+            background: linear-gradient(to right, var(--neon-pink), var(--neon-blue));
+            color: white !important;
+            font-weight: 700;
+            padding: 12px 30px;
+            border-radius: 50px;
+            box-shadow: 0 0 15px rgba(255, 74, 139, 0.7);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cyber-project-highlight a:hover {
+            box-shadow: 0 0 30px rgba(74, 141, 255, 1), 0 0 40px rgba(255, 74, 139, 1);
+            transform: scale(1.05);
+        }
+
+        /* Hiệu ứng tia sáng chạy quanh card khi hover */
+        .cyber-project-highlight:hover {
+            box-shadow: 0 0 25px rgba(74, 141, 255, 0.9), 0 0 50px rgba(255, 74, 139, 0.6); 
+            transform: scale(1.02);
+        }
+
+        /* Đặt lại project-info cho các card KHÔNG phải là highlight để không bị ảnh hưởng */
+        .project-card:not(.cyber-project-highlight) .project-info { 
+            padding: 20px; /* Reset padding */
+            text-align: left; /* Reset text align */
+        }
+
+        /* --- 6. Contact Form (MỚI) --- */
+        #contact {
+            padding: 100px 5%; 
+            max-width: 800px; /* Giới hạn chiều rộng form */
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-tagline {
+            color: var(--text-subtle);
+            margin-bottom: 40px;
+            font-size: 1.1em;
+        }
+
+        #contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        #contact-form input,
+        #contact-form textarea {
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2); /* Viền mờ */
+            border-radius: 10px; /* Bo tròn góc */
+            background-color: var(--card-background); /* Nền trong suốt nhẹ */
+            color: var(--text-color);
+            font-size: 1em;
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        #contact-form input:focus,
+        #contact-form textarea:focus {
+            border-color: var(--primary-color); /* Viền sáng khi focus */
+            outline: none;
+            background-color: rgba(0, 0, 0, 0.2); /* Nền tối hơn khi focus */
+        }
+        
+        /* Placeholder styling for better contrast */
+        #contact-form input::placeholder,
+        #contact-form textarea::placeholder {
+            color: var(--text-subtle);
+            opacity: 0.7;
+        }
+
+        #contact-form textarea {
+            resize: vertical;
+        }
+        
+        .contact-submit-btn {
+            padding: 15px 30px;
+            background-color: var(--primary-color);
+            color: var(--background-color); /* Màu chữ tối */
+            border: none;
+            border-radius: 50px; /* Bo tròn mạnh hơn cho nút */
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .contact-submit-btn:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- 7. Footer (MỚI) --- */
+        .main-footer {
+            text-align: center; /* CĂN GIỮA TEXT */
+            padding: 30px 5%;
+            /* ĐÃ CHỈNH SỬA: Thay màu nền tối cố định bằng transparent để hòa hợp với nền gradient */
+            background-color: transparent; 
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-subtle);
+            font-size: 0.9em;
+            font-weight: 400;
+        }
+        .main-footer p {
+            margin: 0;
+            /* ĐIỀU CHỈNH: Tăng kích thước font chữ cho to hơn */
+            font-size: 1.3em; /* Đã tăng từ 1.1em lên 1.3em */
+        }
+
+        /* --- 8. Nút Quay Lại Đầu Trang (Back to Top) --- */
+        #back-to-top {
+            display: none; /* Ẩn mặc định */
+            position: fixed;
+            bottom: 30px; /* Cách đáy 30px */
+            right: 30px; /* Cách phải 30px */
+            z-index: 999; /* Đảm bảo nút nằm trên mọi thứ */
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: var(--background-color);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.5em;
+            line-height: 50px; /* Căn giữa biểu tượng */
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+            transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+            opacity: 0.8;
+        }
+
+        #back-to-top:hover {
+            opacity: 1;
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+        }
+        
+        /* --- CSS MỚI CHO THÔNG TIN CÁ NHÂN (PERSONAL INFO BLOCK) --- */
+        .personal-info-block {
+            margin-top: 30px;
+            margin-bottom: 30px; 
+            padding: 20px;
+            border-left: 5px solid var(--primary-color); /* Điểm nhấn viền Cyberpunk */
+            background-color: rgba(255, 255, 255, 0.05); /* Nền tối nhẹ */
+            /* ĐÃ CẬP NHẬT: Tăng độ bo tròn góc */
+            border-radius: 15px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .personal-info-block .info-title {
+            color: var(--primary-color); 
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            text-align: left;
+            font-weight: 700;
+            text-shadow: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .personal-info-block .info-title i {
+            margin-right: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            line-height: 2.2; /* Tăng khoảng cách dòng */
+        }
+
+        .info-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.1); 
+            font-weight: 400;
+            color: var(--text-subtle);
+        }
+
+        .info-list li:last-child {
+            border-bottom: none;
+        }
+
+        .info-list li span {
+            font-weight: 600;
+            color: var(--text-color); 
+            flex-shrink: 0; 
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list li span i {
+            margin-right: 8px;
+            color: var(--primary-color);
+        }
+        /* ------------------------------------------------------------- */
+        
+        /* --- 9. Responsive Nâng Cao --- */
+        @media (max-width: 1024px) {
+             .hero-section {
+                 flex-direction: column;
+                 padding-top: 100px;
+                 padding-bottom: 50px;
+                 text-align: center;
+             }
+             /* Khối Bên Phải (Ảnh & Giới thiệu) */
+             .profile-and-extra-info {
+                 max-width: 100%;
+                 width: 100%;
+                 margin-bottom: 40px;
+                 order: 1; /* Đặt khối Ảnh và Giới thiệu lên trên */
+                 margin-top: 0;
+             }
+             /* Khối Bên Trái (Thông tin cơ bản + Social Links) */
+             .intro-content {
+                 max-width: 100%;
+                 padding-right: 0;
+                 order: 2; /* Đặt nội dung thông tin cơ bản xuống dưới */
+                 text-align: center;
+             }
+             
+             .profile-image-container {
+                 margin-bottom: 0;
+             }
+             
+             .intro-content-right {
+                 margin-top: 30px; 
+             }
+             
+             .hero-section h1 {
+                 text-align: center;
+             }
+             .tagline-intro {
+                 text-align: center;
+             }
+             
+             /* ĐIỀU CHỈNH SOCIAL LINKS TRÊN MOBILE (Nằm trong Personal Info Block mới) */
+             /* Loại bỏ .intro-content để .social-links tự động căn giữa/trái theo container mới */
+             .social-links {
+                 text-align: center; /* Căn giữa các icon khi trên mobile */
+             }
+             
+             /* ĐIỀU CHỈNH RESPONSIVE CHO PROJECT GRID */
+             .projects-grid {
+                 grid-template-columns: 1fr; /* Trở lại 1 cột trên mobile */
+             }
+             
+             /* ĐIỀU CHỈNH CERTIFICATION LIST */
+             .cert-header {
+                 display: block;
+                 text-align: center;
+             }
+             .cert-icon {
+                 margin: 0 auto 10px auto;
+             }
+             .cert-title-group h4, .cert-title-group p {
+                 text-align: center;
+             }
+             .cert-details {
+                 padding-left: 0;
+                 text-align: center;
+             }
+        }
+
+        @media (max-width: 768px) {
+             /* (Giữ nguyên các media queries khác) */
+             .hobbies-grid {
+                 grid-template-columns: 1fr;
+             }
+             .hero-section h1 {
+                 font-size: 2.5em; 
+             }
+             .tagline-intro {
+                 font-size: 1.1em;
+             }
+        }
+        .hamburger-menu {
+            display: none; /* Mặc định ẩn trên desktop */
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5em;
+            cursor: pointer;
+            z-index: 1001; /* Đảm bảo nó luôn nằm trên cùng */
+            padding: 10px;
+        }
+        /* styleqkiet.css - THÊM CÁC THIẾT LẬP CHO MOBILE MENU */
+
+/* Ngăn cuộn trang khi menu đang mở */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* --- MOBILE MENU STYLES (HAMBURGER) --- */
+
+.hamburger-menu {
+    display: none; /* Mặc định ẩn trên desktop */
+    background: none;
+    border: none;
+    color: var(--primary-color); /* Màu xanh chủ đạo */
+    font-size: 1.8em;
+    cursor: pointer;
+    z-index: 1001; 
+    position: fixed; /* Cố định vị trí ở góc trái trên */
+    top: 20px;
+    left: 20px;
+    padding: 10px; 
+    line-height: 1;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); 
+    border-radius: 5px;
+    background-color: rgba(26, 42, 58, 0.9); /* Nền tối nhẹ cho nút */
+}
+
+/* Hiệu ứng xoay nút khi menu mở (tùy chọn) */
+.hamburger-menu.active .fa-bars {
+    transform: rotate(90deg); 
+    color: var(--secondary-color);
+}
+
+/* Media query để kích hoạt menu mobile (Sử dụng breakpoint 992px) */
+@media (max-width: 992px) {
+
+    .hamburger-menu {
+        display: block; /* Hiển thị nút menu trên mobile */
+    }
+
+    .main-header .nav-content {
+        /* Đảm bảo nội dung header không bị nút menu che */
+        padding: 20px 5%; 
+        justify-content: flex-end; 
+    }
+    
+    .main-header {
+        /* Tùy chỉnh để header không bị dính màu nền khi menu mở */
+        background-color: transparent !important; 
+        box-shadow: none !important;
+    }
+
+    /* Định nghĩa Sidebar Menu */
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -280px; /* Ẩn menu ra ngoài màn hình (chiều rộng 280px) */
+        width: 280px; 
+        height: 100%;
+        background-color: var(--dark-cyber); 
+        box-shadow: 5px 0 15px rgba(0, 0, 0, 0.7);
+        flex-direction: column; 
+        padding-top: 100px;
+        z-index: 999;
+        transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
+        gap: 0; 
+        align-items: flex-start; 
+    }
+
+    .nav-links.active {
+        left: 0; /* Hiển thị menu khi có class 'active' */
+    }
+
+    .nav-links li {
+        width: 100%;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
+    }
+
+    .nav-links li:last-child {
+        border-bottom: none;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px 30px;
+        width: 100%;
+        font-size: 1.1em;
+        color: var(--secondary-color);
+    }
+
+    .nav-links a:hover {
+         background-color: var(--card-background);
+         color: var(--primary-color);
+    }
+    
+    .nav-links .btn-download {
+        margin: 20px 30px;
+        text-align: center;
+        width: auto; /* Điều chỉnh lại chiều rộng của nút Tải CV */
+    }
+}
+
+/* Đảm bảo menu ngang hiển thị trên desktop (để ghi đè .main-header .nav-links { display: none } ở trên) */
+@media (min-width: 993px) {
+    .main-header .nav-links {
+        display: flex;
+    }
+}
